@@ -23,8 +23,9 @@ class AppControllerTest {
 
 
     }
+
     @Test
-    void setArticles2(){
+    void setArticles2() {
 
         AppController test = new AppController();
         List<Article> testList1 = new ArrayList<Article>();
@@ -50,7 +51,7 @@ class AppControllerTest {
     void getTopHeadlinesAustriaWithFilledList() {
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author 1", "Austria1"), new Article("Author2", "Belgium"),
-                new Article ("Author3", "Austria2"), new Article ("Author4", "Austria3"));
+                new Article("Author3", "Austria2"), new Article("Author4", "Austria3"));
         test.setArticles(inputList);
 
         List<Article> expected = new ArrayList<Article>();
@@ -65,22 +66,22 @@ class AppControllerTest {
     void getTopHeadlinesAustriaWithEmptyList() {
         AppController test = new AppController();
 
-        assertEquals(Collections.EMPTY_LIST, test.getTopHeadlinesAustria(),"List should be empty");
+        assertEquals(Collections.EMPTY_LIST, test.getTopHeadlinesAustria(), "List should be empty");
     }
 
     @Test
     void getAllNewsBitcoin() {
         AppController test = new AppController();
-        List<Article> actual  = test.getAllNewsBitcoin();
+        List<Article> actual = test.getAllNewsBitcoin();
         List<Article> inputList = List.of(new Article("Author1", "Bitcoin1"), new Article("Author2", "Bitcoin2"),
-                new Article ("Author3", "Stefan"), new Article ("Author4", "Ripple"));
+                new Article("Author3", "Stefan"), new Article("Author4", "Ripple"));
         test.setArticles(inputList);
 
         List<Article> expected = new ArrayList<Article>();
-        expected.add(new Article("Author1","Bitcoin1"));
-        expected.add(new Article("Author2","Bitcoin2"));
+        expected.add(new Article("Author1", "Bitcoin1"));
+        expected.add(new Article("Author2", "Bitcoin2"));
 
-        assertEquals(expected,test.getAllNewsBitcoin());
+        assertEquals(expected, test.getAllNewsBitcoin());
     }
 
     @Test
@@ -124,3 +125,4 @@ class AppControllerTest {
             fail();
         }
     }
+}
