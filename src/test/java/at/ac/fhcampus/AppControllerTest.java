@@ -19,7 +19,7 @@ class AppControllerTest {
         testList1.add(new Article("Author4", "Title4"));
         List<Article> actual = test.getArticles();
 
-        assertEquals(actual.size(),testList1.size());
+        assertEquals(testList1.size(), actual.size());
 
 
     }
@@ -34,7 +34,7 @@ class AppControllerTest {
         testList1.add(new Article("Author4", "Title4"));
         List<Article> actual = test.getArticles();
 
-        assertEquals(actual, testList1);
+        assertEquals(testList1, actual);
 
     }
 
