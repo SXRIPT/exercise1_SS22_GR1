@@ -3,6 +3,7 @@ package at.ac.fhcampus;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,7 +47,7 @@ class AppControllerTest {
 
 
     @Test
-    void getTopHeadlinesAustria() {
+    void getTopHeadlinesAustriaWithFilledList() {
         AppController test = new AppController();
         List<Article> actual = test.getTopHeadlinesAustria();
 
@@ -55,7 +56,14 @@ class AppControllerTest {
         expected.add(new Article("Author2", "Austria2"));
         expected.add(new Article("Author3", "Austria3"));
 
-        assertEquals(expected.size(), actual.size());
+        assertEquals(expected, actual);
+    }
+
+    void getTopHeadlinesAustriaWithEmptyList() {
+        AppController test = new AppController();
+        List<Article> actual = test.getTopHeadlinesAustria();
+
+        assertEquals(Collections.EMPTY_LIST, actual,"List should be empty");
     }
 
     @Test
