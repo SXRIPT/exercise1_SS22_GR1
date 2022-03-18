@@ -59,7 +59,7 @@ class AppControllerTest {
         expected.add(new Article("Author3", "Austria2"));
         expected.add(new Article("Author4", "Austria3"));
 
-        assertEquals(expected, test.getTopHeadlinesAustria());
+        assertEquals(expected.containsAll(test.getTopHeadlinesAustria()), test.getTopHeadlinesAustria().containsAll(expected));
     }
 
     @Test
