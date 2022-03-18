@@ -81,7 +81,7 @@ class AppControllerTest {
         expected.add(new Article("Author1", "Bitcoin1"));
         expected.add(new Article("Author2", "Bitcoin2"));
 
-        assertEquals(expected, test.getAllNewsBitcoin());
+        assertEquals(expected.containsAll(test.getAllNewsBitcoin()), test.getAllNewsBitcoin().containsAll(expected), "Filter result incorrect");
     }
 
     @Test
