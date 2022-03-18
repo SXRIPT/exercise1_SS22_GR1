@@ -72,6 +72,9 @@ class AppControllerTest {
     void getAllNewsBitcoin() {
         AppController test = new AppController();
         List<Article> actual  = test.getAllNewsBitcoin();
+        List<Article> inputList = List.of(new Article("Author1", "Bitcoin1"), new Article("Author2", "Bitcoin2"),
+                new Article ("Author3", "Stefan"), new Article ("Author4", "Ripple"));
+        test.setArticles(inputList);
 
         List<Article> expected = new ArrayList<Article>();
         expected.add(new Article("Author1","Bitcoin1"));
@@ -121,4 +124,3 @@ class AppControllerTest {
             fail();
         }
     }
-}
