@@ -1,6 +1,8 @@
 package at.ac.fhcampus;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class AppController {
     private List<Article> articles;
@@ -27,10 +29,15 @@ public class AppController {
     }
 
     protected List<Article> filterList(String query, List<Article> articles) {
-        
+        return articles
+                .stream()
+                .filter(article -> article.getTitle().toLowerCase(Locale.ROOT).contains(query.toLowerCase(Locale.ROOT)))
+                .toList();
     }
 
     public List<Article> generateMockList() {
-
+        return Arrays.asList(new Article("New York Times", "Bitcoin smth"),
+                new Article("Bild", "Österreich"),
+                new Article("Günther", "Bitcoin 123"));
     }
 }
