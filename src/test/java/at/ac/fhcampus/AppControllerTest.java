@@ -41,14 +41,15 @@ class AppControllerTest {
     @Test
     void getTopHeadlinesAustriaWithFilledList() {
         AppController test = new AppController();
-        List<Article> actual = test.getTopHeadlinesAustria();
+        List<Article> inputList = List.of(new Article("Author 1", "Austria1"), new Article("Author2", "Belgium"),
+                new Article ("Author3", "Austria2"), new Article ("Author4", "Austria3"));
 
         List<Article> expected = new ArrayList<Article>();
         expected.add(new Article("Author1", "Austria1"));
-        expected.add(new Article("Author2", "Austria2"));
-        expected.add(new Article("Author3", "Austria3"));
+        expected.add(new Article("Author3", "Austria2"));
+        expected.add(new Article("Author4", "Austria3"));
 
-        assertEquals(expected, actual);
+        assertEquals(expected, test.getTopHeadlinesAustria());
     }
 
     void getTopHeadlinesAustriaWithEmptyList() {
