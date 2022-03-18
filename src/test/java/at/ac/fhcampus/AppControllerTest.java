@@ -42,7 +42,7 @@ class AppControllerTest {
     void getArticleCount1() {
         AppController test = new AppController();
         int articleCount = 7;
-        assertEquals(test.getArticleCount(), articleCount);
+        assertEquals(articleCount, test.getArticleCount());
     }
 
 
