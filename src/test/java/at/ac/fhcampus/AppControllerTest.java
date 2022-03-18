@@ -30,14 +30,24 @@ class AppControllerTest {
     }
 
     @Test
-    void getArticleCount() {
+    void getArticleCount1() {
         AppController test = new AppController();
         int articleCount = 7;
         assertEquals(test.getArticleCount(), articleCount);
     }
 
+
     @Test
     void getTopHeadlinesAustria() {
+        AppController test = new AppController();
+        List<Article> actual = test.getTopHeadlinesAustria();
+
+        List<Article> expected = new ArrayList<Article>();
+        expected.add(new Article("Author1", "Austria1"));
+        expected.add(new Article("Author2", "Austria2"));
+        expected.add(new Article("Author3", "Austria3"));
+
+        assertEquals(expected.size(), actual.size());
     }
 
     @Test
