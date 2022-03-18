@@ -12,6 +12,10 @@ class AppControllerTest {
     @Test
     void setArticles1() {
         AppController test = new AppController();
+        List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
+                new Article("Author3", "Title3"), new Article("Author4", "Title4"));
+        test.setArticles(inputList);
+
         List<Article> testList1 = new ArrayList<Article>();
         testList1.add(new Article("Author1", "Title1"));
         testList1.add(new Article("Author2", "Title2"));
@@ -28,6 +32,9 @@ class AppControllerTest {
     void setArticles2() {
 
         AppController test = new AppController();
+        List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
+                new Article("Author3", "Title3"), new Article("Author4", "Title4"));
+        test.setArticles(inputList);
         List<Article> testList1 = new ArrayList<Article>();
         testList1.add(new Article("Author1", "Title1"));
         testList1.add(new Article("Author2", "Title2"));
@@ -59,7 +66,7 @@ class AppControllerTest {
         expected.add(new Article("Author3", "Austria2"));
         expected.add(new Article("Author4", "Austria3"));
 
-        assertEquals(expected, test.getTopHeadlinesAustria());
+        assertEquals(expected.containsAll(test.getTopHeadlinesAustria()), test.getTopHeadlinesAustria().containsAll(expected));
     }
 
     @Test
