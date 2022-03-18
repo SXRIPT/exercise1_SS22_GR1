@@ -70,9 +70,8 @@ class AppControllerTest {
     }
 
     @Test
-    void getAllNewsBitcoin() {
+    void getAllNewsBitcoinTest() {
         AppController test = new AppController();
-        List<Article> actual = test.getAllNewsBitcoin();
         List<Article> inputList = List.of(new Article("Author1", "Bitcoin1"), new Article("Author2", "Bitcoin2"),
                 new Article("Author3", "Stefan"), new Article("Author4", "Ripple"));
         test.setArticles(inputList);
@@ -82,6 +81,13 @@ class AppControllerTest {
         expected.add(new Article("Author2", "Bitcoin2"));
 
         assertEquals(expected.containsAll(test.getAllNewsBitcoin()), test.getAllNewsBitcoin().containsAll(expected), "Filter result incorrect");
+    }
+
+    @Test
+    void getAllNewsBitcoinEmptyTest() {
+        AppController test = new AppController();
+
+        assertEquals(Collections.EMPTY_LIST, test.getAllNewsBitcoin(), "List should be empty");
     }
 
     @Test
