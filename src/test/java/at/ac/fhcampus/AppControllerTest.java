@@ -51,6 +51,7 @@ class AppControllerTest {
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author 1", "Austria1"), new Article("Author2", "Belgium"),
                 new Article ("Author3", "Austria2"), new Article ("Author4", "Austria3"));
+        test.setArticles(inputList);
 
         List<Article> expected = new ArrayList<Article>();
         expected.add(new Article("Author1", "Austria1"));
