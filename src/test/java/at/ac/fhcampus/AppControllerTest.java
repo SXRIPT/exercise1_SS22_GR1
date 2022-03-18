@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppControllerTest {
 
     @Test
-    void setArticles() {
+    void setArticles1() {
         AppController test = new AppController();
         List<Article> testList1 = new ArrayList<Article>();
         testList1.add(new Article("Author1", "Title1"));
@@ -19,13 +19,21 @@ class AppControllerTest {
         List<Article> actual = test.getArticles();
 
         assertEquals(actual.size(),testList1.size());
-        if(actual.size() == testList1.size()){
-            int sizeList = actual.size();
-            for(int k = 0; k < sizeList; k++){
-                assertEquals(actual.get(k), testList1.get(k));
-            }
 
-        }
+
+    }
+    @Test
+    void setArticles2(){
+
+        AppController test = new AppController();
+        List<Article> testList1 = new ArrayList<Article>();
+        testList1.add(new Article("Author1", "Title1"));
+        testList1.add(new Article("Author2", "Title2"));
+        testList1.add(new Article("Author3", "Title3"));
+        testList1.add(new Article("Author4", "Title4"));
+        List<Article> actual = test.getArticles();
+
+        assertEquals(actual, testList1);
 
     }
 
