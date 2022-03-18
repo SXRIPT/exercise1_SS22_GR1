@@ -61,11 +61,11 @@ class AppControllerTest {
         assertEquals(expected, test.getTopHeadlinesAustria());
     }
 
+    @Test
     void getTopHeadlinesAustriaWithEmptyList() {
         AppController test = new AppController();
-        List<Article> actual = test.getTopHeadlinesAustria();
 
-        assertEquals(Collections.EMPTY_LIST, actual,"List should be empty");
+        assertEquals(Collections.EMPTY_LIST, test.getTopHeadlinesAustria(),"List should be empty");
     }
 
     @Test
