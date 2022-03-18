@@ -80,7 +80,7 @@ class AppControllerTest {
         expected.add(new Article("Author1","Bitcoin1"));
         expected.add(new Article("Author2","Bitcoin2"));
 
-        assertEquals(expected.size(),actual.size());
+        assertEquals(expected,test.getAllNewsBitcoin());
     }
 
     @Test
