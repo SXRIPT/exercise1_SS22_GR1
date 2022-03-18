@@ -63,6 +63,44 @@ class AppControllerTest {
     }
 
     @Test
-    void filterList() {
+    void filterListWithValidQuery() {
+        try {
+            final AppController controller = new AppController();
+            List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
+                    new Article("Financial Times", "Something else happened"));
+
+            assertEquals(inputList, controller.filterList("SoMeThInG", inputList), "Filter result incorrect");
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void filterListWithEmptyQuery() {
+        try {
+            final AppController controller = new AppController();
+            List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
+                    new Article("Financial Times", "Something else happened"));
+
+            assertEquals(inputList, controller.filterList("", inputList), "Filter result incorrect");
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    @Test
+    void filterListWithQueryNotFoundInArticles() {
+        try {
+            final AppController controller = new AppController();
+            List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
+                    new Article("Financial Times", "Something else happened"));
+
+            assertNotEquals(inputList, controller.filterList("Günther", inputList), "Filter result incorrect");
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
     }
 }
