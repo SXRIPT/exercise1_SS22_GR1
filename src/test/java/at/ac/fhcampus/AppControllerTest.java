@@ -88,6 +88,7 @@ class AppControllerTest {
 
     @Test
     void getAllNewsBitcoinTest() {
+        // method checks if the articles were filtered correctly
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Bitcoin1"), new Article("Author2", "Bitcoin2"),
                 new Article("Author3", "Stefan"), new Article("Author4", "Ripple"));
@@ -102,6 +103,7 @@ class AppControllerTest {
 
     @Test
     void getAllNewsBitcoinEmptyTest() {
+        // method checks if an empty List is returned as an empty List
         AppController test = new AppController();
 
         assertEquals(Collections.emptyList(), test.getAllNewsBitcoin(), "List should be empty");
