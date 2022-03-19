@@ -26,10 +26,12 @@ public class Menu {
     }
 
     private static void printExitMessage() {
+        System.out.println("Have a nice day!");
 
     }
 
     private static void printInvalidInputMessage() {
+        System.out.println("Your input was invalid. Please enter a letter from one of the given choices.");
 
     }
 
