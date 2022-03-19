@@ -63,6 +63,7 @@ class AppControllerTest {
 
     @Test
     void getTopHeadlinesAustriaWithFilledList() {
+        // method checks if the articles were filtered correctly
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author 1", "Austria1"), new Article("Author2", "Belgium"),
                 new Article("Author3", "Austria2"), new Article("Author4", "Austria3"));
@@ -78,6 +79,7 @@ class AppControllerTest {
 
     @Test
     void getTopHeadlinesAustriaWithEmptyList() {
+        // method checks if an empty List is returned as an empty List
         AppController test = new AppController();
 
         assertEquals(Collections.emptyList(), test.getTopHeadlinesAustria(), "List should be empty");

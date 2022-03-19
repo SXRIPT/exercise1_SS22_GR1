@@ -1,12 +1,16 @@
 package at.ac.fhcampus;
 
+import java.util.Scanner;
+
 public class Menu {
     private AppController controller;
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Please enter a letter from one of the given choices.";
     private static final String EXIT_MESSAGE = "Have a nice day!";
 
     public void start() {
+        Scanner scanner = new Scanner(System.in);
         printMenu();
+        handleInput(scanner.nextLine());
     }
 
     private void handleInput(String input) {
