@@ -1,8 +1,8 @@
 package at.ac.fhcampus;
 
 public class Article  {
-    private String author;
-    private String title;
+    private final String author;
+    private final String title;
 
     public Article(String author, String title) {
         this.author = author;

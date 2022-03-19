@@ -3,7 +3,7 @@ package at.ac.fhcampus;
 import java.util.Scanner;
 
 public class Menu {
-    private AppController controller;
+    private final AppController controller = new AppController();
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Please enter a letter from one of the given choices.";
     private static final String EXIT_MESSAGE = "Have a nice day!";
 
@@ -14,16 +14,22 @@ public class Menu {
     }
 
     private void handleInput(String input) {
-
+        switch (input) {
+            case "a" -> getTopHeadlinesAustria(controller);
+            case "b" -> getAllNewsBitcoin(controller);
+            case "y" -> getArticleCount(controller);
+            case "q" -> printExitMessage();
+            default -> printInvalidInputMessage();
+        }
+        if(!input.equals("q")) start();
     }
 
     private void getArticleCount(AppController ctrl) {
-        System.out.println("Number of articles: "+ctrl.getArticleCount());
+        System.out.println("Number of articles: " + ctrl.getArticleCount());
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
         System.out.println(ctrl.getTopHeadlinesAustria());
-
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
@@ -36,7 +42,6 @@ public class Menu {
 
     private static void printInvalidInputMessage() {
         System.out.println(INVALID_INPUT_MESSAGE);
-
     }
 
     private static void printMenu() {

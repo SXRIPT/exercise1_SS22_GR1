@@ -111,6 +111,7 @@ class AppControllerTest {
 
     @Test
     void filterListWithValidQuery() {
+        // Filter List with a valid Query
         try {
             final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
@@ -125,6 +126,7 @@ class AppControllerTest {
 
     @Test
     void filterListWithEmptyQuery() {
+        // Filter List with an empty Query
         try {
             final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
@@ -139,6 +141,7 @@ class AppControllerTest {
 
     @Test
     void filterListWithQueryNotFoundInArticles() {
+        // Filter List with query not found in Articles
         try {
             final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),

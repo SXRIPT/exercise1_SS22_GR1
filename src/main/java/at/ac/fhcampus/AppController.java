@@ -5,6 +5,10 @@ import java.util.*;
 public class AppController {
     private List<Article> articles;
 
+    public AppController() {
+        setArticles(generateMockList());
+    }
+
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
