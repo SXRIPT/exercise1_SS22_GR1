@@ -6,7 +6,7 @@ public class Menu {
     private static final String EXIT_MESSAGE = "Have a nice day!";
 
     public void start() {
-
+        printMenu();
     }
 
     private void handleInput(String input) {
@@ -14,7 +14,7 @@ public class Menu {
     }
 
     private void getArticleCount(AppController ctrl) {
-
+        System.out.println("Number of articles: "+ctrl.getArticleCount());
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
