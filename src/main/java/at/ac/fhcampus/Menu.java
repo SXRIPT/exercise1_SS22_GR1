@@ -2,8 +2,8 @@ package at.ac.fhcampus;
 
 public class Menu {
     private AppController controller;
-    private String INVALID_INPUT_MESSAGE;
-    private String EXIT_MESSAGE;
+    private static final String INVALID_INPUT_MESSAGE = "";
+    private static final String EXIT_MESSAGE = "";
 
     public void start() {
 
@@ -25,15 +25,15 @@ public class Menu {
 
     }
 
-    private void printExitMessage() {
+    private static void printExitMessage() {
 
     }
 
-    private void printInvalidInputMessage() {
+    private static void printInvalidInputMessage() {
 
     }
 
-    private void printMenu() {
+    private static void printMenu() {
 
     }
 }

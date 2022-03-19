@@ -1,6 +1,6 @@
 package at.ac.fhcampus;
 
-public class Article {
+public class Article  {
     private String author;
     private String title;
 

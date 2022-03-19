@@ -33,25 +33,29 @@ class AppControllerTest {
     void setArticles2() {
         // method checks if the articles set are correct
         AppController test = new AppController();
-        List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
-                new Article("Author3", "Title3"), new Article("Author4", "Title4"));
+        List<Article> inputList = List.of(new Article("Author1", "Title1"));
         test.setArticles(inputList);
         List<Article> testList1 = new ArrayList<Article>();
         testList1.add(new Article("Author1", "Title1"));
-        testList1.add(new Article("Author2", "Title2"));
-        testList1.add(new Article("Author3", "Title3"));
-        testList1.add(new Article("Author4", "Title4"));
+
         List<Article> actual = test.getArticles();
 
-        assertEquals(testList1, actual);
+
+        assertEquals(testList1.containsAll(actual), actual.containsAll(testList1));
 
     }
 
     @Test
     void getArticleCount1() {
         AppController test = new AppController();
-        int articleCount = 7;
+        List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
+                new Article("Author3", "Title3"), new Article("Author4", "Title4"));
+
+        test.setArticles(inputList);
+
+        int articleCount = 4;
         assertEquals(articleCount, test.getArticleCount());
+
     }
 
 
@@ -74,7 +78,7 @@ class AppControllerTest {
     void getTopHeadlinesAustriaWithEmptyList() {
         AppController test = new AppController();
 
-        assertEquals(Collections.EMPTY_LIST, test.getTopHeadlinesAustria(), "List should be empty");
+        assertEquals(Collections.emptyList(), test.getTopHeadlinesAustria(), "List should be empty");
     }
 
     @Test
@@ -95,7 +99,7 @@ class AppControllerTest {
     void getAllNewsBitcoinEmptyTest() {
         AppController test = new AppController();
 
-        assertEquals(Collections.EMPTY_LIST, test.getAllNewsBitcoin(), "List should be empty");
+        assertEquals(Collections.emptyList(), test.getAllNewsBitcoin(), "List should be empty");
     }
 
     @Test
