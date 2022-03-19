@@ -49,6 +49,7 @@ class AppControllerTest {
 
     @Test
     void getArticleCount1() {
+        // check if the number of articel in the getArticleCount mehtode is correct.
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
