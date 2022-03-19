@@ -2,8 +2,8 @@ package at.ac.fhcampus;
 
 public class Menu {
     private AppController controller;
-    private static final String INVALID_INPUT_MESSAGE = "";
-    private static final String EXIT_MESSAGE = "";
+    private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Please enter a letter from one of the given choices.";
+    private static final String EXIT_MESSAGE = "Have a nice day!";
 
     public void start() {
 
@@ -26,12 +26,11 @@ public class Menu {
     }
 
     private static void printExitMessage() {
-        System.out.println("Have a nice day!");
-
+        System.out.println(EXIT_MESSAGE);
     }
 
     private static void printInvalidInputMessage() {
-        System.out.println("Your input was invalid. Please enter a letter from one of the given choices.");
+        System.out.println(INVALID_INPUT_MESSAGE);
 
     }
 

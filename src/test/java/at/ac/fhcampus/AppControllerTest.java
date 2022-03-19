@@ -33,13 +33,15 @@ class AppControllerTest {
     void setArticles2() {
         // method checks if the articles set are correct
         AppController test = new AppController();
-        List<Article> inputList = List.of(new Article("Author1", "Title1"));
+        List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
+                new Article("Author3", "Title3"), new Article("Author4", "Title4"));
         test.setArticles(inputList);
         List<Article> testList1 = new ArrayList<Article>();
         testList1.add(new Article("Author1", "Title1"));
-
+        testList1.add(new Article("Author2", "Title2"));
+        testList1.add(new Article("Author3", "Title3"));
+        testList1.add(new Article("Author4", "Title4"));
         List<Article> actual = test.getArticles();
-
 
         assertEquals(testList1.containsAll(actual), actual.containsAll(testList1));
 
