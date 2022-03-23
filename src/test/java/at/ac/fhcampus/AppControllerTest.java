@@ -17,7 +17,7 @@ class AppControllerTest {
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
         test.setArticles(inputList);
 
-        List<Article> testList1 = new ArrayList<Article>();
+        List<Article> testList1 = new ArrayList<>();
         testList1.add(new Article("Author1", "Title1"));
         testList1.add(new Article("Author2", "Title2"));
         testList1.add(new Article("Author3", "Title3"));
@@ -25,8 +25,6 @@ class AppControllerTest {
         List<Article> actual = test.getArticles();
 
         assertEquals(testList1.size(), actual.size());
-
-
     }
 
     @Test
@@ -36,20 +34,19 @@ class AppControllerTest {
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
         test.setArticles(inputList);
-        List<Article> testList1 = new ArrayList<Article>();
+        List<Article> testList1 = new ArrayList<>();
         testList1.add(new Article("Author1", "Title1"));
         testList1.add(new Article("Author2", "Title2"));
         testList1.add(new Article("Author3", "Title3"));
         testList1.add(new Article("Author4", "Title4"));
         List<Article> actual = test.getArticles();
 
-        assertEquals(testList1.containsAll(actual), actual.containsAll(testList1));
-
+        assertEquals(testList1, actual);
     }
 
     @Test
     void getArticleCount1() {
-        // check if the number of articel in the getArticleCount mehtode is correct.
+        // check if the number of articles in the getArticleCount method is correct.
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
@@ -58,24 +55,35 @@ class AppControllerTest {
 
         int articleCount = 4;
         assertEquals(articleCount, test.getArticleCount());
-
     }
 
+    @Test
+    void getArticleCountEmptyArticles() {
+        // Checks for correct behaviour (to return 0) on empty Articles List
+        try {
+            final int count = new AppController().getArticleCount();
+            assertEquals(0, count, "Article count should equal 0");
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
 
     @Test
     void getTopHeadlinesAustriaWithFilledList() {
         // method checks if the articles were filtered correctly
         AppController test = new AppController();
-        List<Article> inputList = List.of(new Article("Author 1", "Austria1"), new Article("Author2", "Belgium"),
+        List<Article> inputList = List.of(new Article("Author1", "Austria1"), new Article("Author2", "Belgium"),
                 new Article("Author3", "Austria2"), new Article("Author4", "Austria3"));
         test.setArticles(inputList);
 
-        List<Article> expected = new ArrayList<Article>();
+        List<Article> expected = new ArrayList<>();
         expected.add(new Article("Author1", "Austria1"));
+        expected.add(new Article("Author2", "Belgium")); // TODO: CHANGE WHEN IMPLEMENTING REAL LOGIC FOR getTopHeadlinesAustria
         expected.add(new Article("Author3", "Austria2"));
         expected.add(new Article("Author4", "Austria3"));
 
-        assertEquals(expected.containsAll(test.getTopHeadlinesAustria()), test.getTopHeadlinesAustria().containsAll(expected));
+        assertEquals(expected, test.getTopHeadlinesAustria(), "Lists should be equal");
     }
 
     @Test
@@ -94,11 +102,11 @@ class AppControllerTest {
                 new Article("Author3", "Stefan"), new Article("Author4", "Ripple"));
         test.setArticles(inputList);
 
-        List<Article> expected = new ArrayList<Article>();
+        List<Article> expected = new ArrayList<>();
         expected.add(new Article("Author1", "Bitcoin1"));
         expected.add(new Article("Author2", "Bitcoin2"));
 
-        assertEquals(expected.containsAll(test.getAllNewsBitcoin()), test.getAllNewsBitcoin().containsAll(expected), "Filter result incorrect");
+        assertEquals(expected, test.getAllNewsBitcoin(), "Filter result incorrect");
     }
 
     @Test
@@ -113,11 +121,10 @@ class AppControllerTest {
     void filterListWithValidQuery() {
         // Filter List with a valid Query
         try {
-            final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));
 
-            assertEquals(inputList, controller.filterList("SoMeThInG", inputList), "Filter result incorrect");
+            assertEquals(inputList, AppController.filterList("SoMeThInG", inputList), "Filter result incorrect");
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -128,11 +135,10 @@ class AppControllerTest {
     void filterListWithEmptyQuery() {
         // Filter List with an empty Query
         try {
-            final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));
 
-            assertEquals(inputList, controller.filterList("", inputList), "Filter result incorrect");
+            assertEquals(inputList, AppController.filterList("", inputList), "Filter result incorrect");
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -143,11 +149,10 @@ class AppControllerTest {
     void filterListWithQueryNotFoundInArticles() {
         // Filter List with query not found in Articles
         try {
-            final AppController controller = new AppController();
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));
 
-            assertNotEquals(inputList, controller.filterList("Günther", inputList), "Filter result incorrect");
+            assertEquals(Collections.emptyList(), AppController.filterList("Günther", inputList), "Filter result incorrect");
         } catch (Exception e) {
             e.printStackTrace();
             fail();

@@ -8,9 +8,9 @@ public class Menu {
     private static final String EXIT_MESSAGE = "Have a nice day!";
 
     public void start() {
-        Scanner scanner = new Scanner(System.in);
         printMenu();
-        handleInput(scanner.nextLine());
+        Scanner scanner = new Scanner(System.in);
+        handleInput(scanner.nextLine().toLowerCase());
     }
 
     private void handleInput(String input) {

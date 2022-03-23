@@ -5,10 +5,6 @@ import java.util.*;
 public class AppController {
     private List<Article> articles;
 
-    public AppController() {
-        setArticles(generateMockList());
-    }
-
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
@@ -29,12 +25,12 @@ public class AppController {
         return filterList("bitcoin", articles);
     }
 
-    protected List<Article> filterList(String query, List<Article> articles) {
-        if(articles == null) return Collections.emptyList();
-        return articles
-                .stream()
-                .filter(article -> article.getTitle().toLowerCase(Locale.ROOT).contains(query.toLowerCase(Locale.ROOT)))
-                .toList();
+    protected static List<Article> filterList(String query, List<Article> articles) {
+        return articles == null ?
+                Collections.emptyList() :
+                articles.stream()
+                        .filter(article -> article.getTitle().toLowerCase(Locale.ROOT).contains(query.toLowerCase(Locale.ROOT)))
+                        .toList();
     }
 
     private static List<Article> generateMockList() {
