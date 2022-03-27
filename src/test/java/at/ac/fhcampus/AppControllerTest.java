@@ -1,5 +1,6 @@
 package at.ac.fhcampus;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppControllerTest {
 
     @Test
+    @DisplayName("Checks if the number of articles set is correct")
     void setArticles1() {
-        // methode checks if the number of articles set is correct
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
@@ -28,8 +29,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Checks if the articles set are correct")
     void setArticles2() {
-        // method checks if the articles set are correct
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
@@ -45,8 +46,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Check if the number of articles in getArticleCount() is correct")
     void getArticleCount1() {
-        // check if the number of articles in the getArticleCount method is correct.
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Title1"), new Article("Author2", "Title2"),
                 new Article("Author3", "Title3"), new Article("Author4", "Title4"));
@@ -58,8 +59,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Checks for correct behaviour (to return 0) on empty Articles List")
     void getArticleCountEmptyArticles() {
-        // Checks for correct behaviour (to return 0) on empty Articles List
         try {
             final int count = new AppController().getArticleCount();
             assertEquals(0, count, "Article count should equal 0");
@@ -70,8 +71,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Checks if the articles were filtered correctly")
     void getTopHeadlinesAustriaWithFilledList() {
-        // method checks if the articles were filtered correctly
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Austria1"), new Article("Author2", "Belgium"),
                 new Article("Author3", "Austria2"), new Article("Author4", "Austria3"));
@@ -87,16 +88,16 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Checks if an empty List is returned as an empty List")
     void getTopHeadlinesAustriaWithEmptyList() {
-        // method checks if an empty List is returned as an empty List
         AppController test = new AppController();
 
         assertEquals(Collections.emptyList(), test.getTopHeadlinesAustria(), "List should be empty");
     }
 
     @Test
+    @DisplayName("Checks if the articles were filtered correctly")
     void getAllNewsBitcoinTest() {
-        // method checks if the articles were filtered correctly
         AppController test = new AppController();
         List<Article> inputList = List.of(new Article("Author1", "Bitcoin1"), new Article("Author2", "Bitcoin2"),
                 new Article("Author3", "Stefan"), new Article("Author4", "Ripple"));
@@ -110,16 +111,16 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Expects empty List if no Articles in AppController")
     void getAllNewsBitcoinEmptyTest() {
-        // method checks if an empty List is returned as an empty List
         AppController test = new AppController();
 
         assertEquals(Collections.emptyList(), test.getAllNewsBitcoin(), "List should be empty");
     }
 
     @Test
+    @DisplayName("Filter List with a valid Query")
     void filterListWithValidQuery() {
-        // Filter List with a valid Query
         try {
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));
@@ -132,8 +133,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Filter List with an empty Query")
     void filterListWithEmptyQuery() {
-        // Filter List with an empty Query
         try {
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));
@@ -146,8 +147,8 @@ class AppControllerTest {
     }
 
     @Test
+    @DisplayName("Filter List with query not found in Articles")
     void filterListWithQueryNotFoundInArticles() {
-        // Filter List with query not found in Articles
         try {
             List<Article> inputList = List.of(new Article("New York Times", "Something happened"),
                     new Article("Financial Times", "Something else happened"));

@@ -28,10 +28,7 @@ public class Article {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + (title == null ? 0 : title.hashCode());
-        hash = 53 * hash + (author == null ? 0 : author.hashCode());
-        return hash;
+        return Objects.hash(author, title);
     }
 
     @Override
