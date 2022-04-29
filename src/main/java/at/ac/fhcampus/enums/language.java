@@ -1,4 +1,4 @@
 package at.ac.fhcampus.enums;
 
-public class language {
+public enum language {
 }

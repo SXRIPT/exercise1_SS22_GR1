@@ -1,4 +1,4 @@
 package at.ac.fhcampus.enums;
 
-public class endpoint {
+public enum endpoint {
 }
