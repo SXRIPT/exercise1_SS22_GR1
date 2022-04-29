@@ -1,14 +1,12 @@
 package at.ac.fhcampus;
 
 import com.google.gson.Gson;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
 
 public class NewsApi {
@@ -20,24 +18,28 @@ public class NewsApi {
     private final OkHttpClient client = new OkHttpClient();
     private final Gson gson = new Gson();
 
-    private NewsResponse reqeust(String url) {
+    private NewsResponse request(String url) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
         try (Response response = client.newCall(request).execute()) {
-            String json = Objects.requireNonNull(response.body()).string();
-            return gson.fromJson(json, NewsResponse.class);
-        } catch (IOException | NullPointerException e) {
+            if(response.body() != null) {
+                String json = response.body().string();
+                return gson.fromJson(json, NewsResponse.class);
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
     private NewsResponse getTopHeadlinesAustria(String query) {
-        return reqeust(BASE_URL + TOP_HEADLINE_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
+        return request(BASE_URL + TOP_HEADLINE_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
     }
 
     private NewsResponse getAllNewsBitcoin(String query) {
-        return reqeust(BASE_URL + EVERYTHING_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
+        return request(BASE_URL + EVERYTHING_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
     }
     /*
     public URL buildUrl(String endpoint,String query, String country){
