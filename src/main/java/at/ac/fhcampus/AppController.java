@@ -1,6 +1,5 @@
 package at.ac.fhcampus;
 
-import java.net.URL;
 import java.util.*;
 
 public class AppController {
@@ -34,7 +33,7 @@ public class AppController {
         return articles;
 
     }
-
+    /*
     protected static List<Article> filterList(String query, List<Article> articles) {
         return articles == null ?
                 Collections.emptyList() :
@@ -43,7 +42,7 @@ public class AppController {
                         .toList();
     }
 
- /*   private static List<Article> generateMockList() {
+   private static List<Article> generateMockList() {
         return Arrays.asList(new Article("New York Times", "Bitcoin smth", description, url, urlToImage, publishedAt, content),
                 new Article("Bild", "Österreich", description, url, urlToImage, publishedAt, content),
                 new Article("Günther", "Bitcoin 123", description, url, urlToImage, publishedAt, content));
