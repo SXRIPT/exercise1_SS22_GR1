@@ -32,11 +32,11 @@ public class NewsApi {
         return null;
     }
 
-    private NewsResponse getTopHeadlinesAustria(String query) {
+    public NewsResponse getTopHeadlinesAustria(String query) {                  //TODO: Make Static
         return request(buildUrlTopHeadlines(query, null, null));
     }
 
-    private NewsResponse getAllNewsBitcoin(String query) {
+public NewsResponse getAllNewsBitcoin(String query) {                           //TODO: Make Static
         return request(buildUrlEverything(query, null, null));
     }
 
@@ -61,7 +61,6 @@ public class NewsApi {
 
     public String buildUrlTopHeadlines(String q, Country country, Category category) {
         HttpUrl.Builder builder = buildBaseUrl(Endpoint.TOP_HEADLINES);
-        builder.addQueryParameter("q", null);
         if(q != null) builder.addQueryParameter("q", q);
         if(country != null) builder.addQueryParameter("country", country.label);
         if(category != null) builder.addQueryParameter("category", category.label);

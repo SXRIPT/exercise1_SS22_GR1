@@ -1,5 +1,6 @@
 package at.ac.fhcampus;
 
+import java.net.URL;
 import java.util.*;
 
 public class AppController {
@@ -18,7 +19,11 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria() {
-        return articles == null ? Collections.emptyList() : articles;
+        NewsApi newsApi = new NewsApi();
+        NewsResponse newsResponse;
+        newsResponse = newsApi.getTopHeadlinesAustria("corona");
+        articles = newsResponse.getArticles();
+        return articles;
     }
 
     public List<Article> getAllNewsBitcoin() {
