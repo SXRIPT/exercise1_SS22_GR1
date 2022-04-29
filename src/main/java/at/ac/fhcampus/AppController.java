@@ -33,9 +33,9 @@ public class AppController {
                         .toList();
     }
 
-    private static List<Article> generateMockList() {
-        return Arrays.asList(new Article("New York Times", "Bitcoin smth"),
-                new Article("Bild", "Österreich"),
-                new Article("Günther", "Bitcoin 123"));
-    }
+ /*   private static List<Article> generateMockList() {
+        return Arrays.asList(new Article("New York Times", "Bitcoin smth", description, url, urlToImage, publishedAt, content),
+                new Article("Bild", "Österreich", description, url, urlToImage, publishedAt, content),
+                new Article("Günther", "Bitcoin 123", description, url, urlToImage, publishedAt, content));
+    } */
 }
