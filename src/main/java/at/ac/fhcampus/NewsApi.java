@@ -1,6 +1,8 @@
 package at.ac.fhcampus;
 
+import at.ac.fhcampus.enums.*;
 import com.google.gson.Gson;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -11,9 +13,6 @@ import java.util.Objects;
 
 public class NewsApi {
     private static final String API_KEY = "aba5826bfd6a41ab980f009db6d19639";
-    private static final String BASE_URL = "https://newsapi.org/v2/";
-    private static final String TOP_HEADLINE_ENDPOINT = "top-headlines";
-    private static final String EVERYTHING_ENDPOINT = "everything";
 
     private final OkHttpClient client = new OkHttpClient();
     private final Gson gson = new Gson();
@@ -34,25 +33,39 @@ public class NewsApi {
     }
 
     private NewsResponse getTopHeadlinesAustria(String query) {
-        return request(BASE_URL + TOP_HEADLINE_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
+        return request(buildUrlTopHeadlines(query, null, null));
     }
 
     private NewsResponse getAllNewsBitcoin(String query) {
-        return request(BASE_URL + EVERYTHING_ENDPOINT + "apiKey=" + API_KEY + "&q=" + query);
+        return request(buildUrlEverything(query, null, null));
     }
-    /*
-    public URL buildUrl(String endpoint,String query, String country){
-        URL url = new HttpUrl.Builder()
+
+    private HttpUrl.Builder buildBaseUrl(Endpoint endpoint) {
+        return new HttpUrl.Builder()
                 .scheme("https")
                 .host("newsapi.org")
                 .addPathSegment("v2")
-                .addPathSegment(endpoint)
-                .addQueryParameter("q",query)
-                .addQueryParameter("country",country)
-                .addQueryParameter("apiKey", API_KEY)
-                .build().url();
-        return url;
+                .addPathSegment(endpoint.label)
+                .addQueryParameter("apiKey", API_KEY);
     }
 
-     */
+    public String buildUrlEverything(String q, Language language, SortBy sortBy) {
+        HttpUrl.Builder builder = buildBaseUrl(Endpoint.EVERYTHING);
+
+        if(q != null) builder.addQueryParameter("q", q);
+        if(language != null) builder.addQueryParameter("language", language.label);
+        if(sortBy != null) builder.addQueryParameter("sortBy", sortBy.label);
+
+        return builder.build().url().toString();
+    }
+
+    public String buildUrlTopHeadlines(String q, Country country, Category category) {
+        HttpUrl.Builder builder = buildBaseUrl(Endpoint.TOP_HEADLINES);
+        builder.addQueryParameter("q", null);
+        if(q != null) builder.addQueryParameter("q", q);
+        if(country != null) builder.addQueryParameter("country", country.label);
+        if(category != null) builder.addQueryParameter("category", category.label);
+
+        return builder.build().url().toString();
+    }
 }
