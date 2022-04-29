@@ -22,12 +22,11 @@ public class NewsApi {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+
         try (Response response = client.newCall(request).execute()) {
-            if(response.body() != null) {
-                String json = response.body().string();
+                String json = Objects.requireNonNull(response.body()).string();
                 return gson.fromJson(json, NewsResponse.class);
-            }
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
 
