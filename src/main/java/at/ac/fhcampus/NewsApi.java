@@ -33,10 +33,10 @@ public class NewsApi {
     }
 
     public NewsResponse getTopHeadlinesAustria(String query) {                  //TODO: Make Static
-        return request(buildUrlTopHeadlines(query, null, null));
+        return request(buildUrlTopHeadlines(query, Country.AUSTRIA, null));
     }
 
-public NewsResponse getAllNewsBitcoin(String query) {                           //TODO: Make Static
+    public NewsResponse getAllNewsBitcoin(String query) {                           //TODO: Make Static
         return request(buildUrlEverything(query, null, null));
     }
 
@@ -49,6 +49,7 @@ public NewsResponse getAllNewsBitcoin(String query) {                           
                 .addQueryParameter("apiKey", API_KEY);
     }
 
+    // HANLDE WRONG ENUMS
     public String buildUrlEverything(String q, Language language, SortBy sortBy) {
         HttpUrl.Builder builder = buildBaseUrl(Endpoint.EVERYTHING);
 
