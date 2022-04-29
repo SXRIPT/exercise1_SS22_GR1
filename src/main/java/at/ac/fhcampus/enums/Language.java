@@ -10,7 +10,7 @@ public enum Language {
     ITALIAN("it"),
     DUTCH("nl"),
     NORWEGIAN("no"),
-    PORTUGESE("pt"),
+    PORTUGUESE("pt"),
     RUSSIAN("ru"),
     SWEDISH("sv"),
     URDU("ud"),
