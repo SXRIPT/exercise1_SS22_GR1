@@ -28,7 +28,7 @@ public class AppController {
     public List<Article> getAllNewsBitcoin() {
         NewsApi newsApi = new NewsApi();
         NewsResponse newsResponse;
-        newsResponse = newsApi.getTopHeadlinesAustria("bitcoin");
+        newsResponse = newsApi.getAllNewsBitcoin("bitcoin");
         articles = newsResponse.getArticles();
         return articles;
 
