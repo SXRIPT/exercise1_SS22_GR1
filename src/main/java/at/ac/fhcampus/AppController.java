@@ -27,7 +27,12 @@ public class AppController {
     }
 
     public List<Article> getAllNewsBitcoin() {
-        return filterList("bitcoin", articles);
+        NewsApi newsApi = new NewsApi();
+        NewsResponse newsResponse;
+        newsResponse = newsApi.getTopHeadlinesAustria("bitcoin");
+        articles = newsResponse.getArticles();
+        return articles;
+
     }
 
     protected static List<Article> filterList(String query, List<Article> articles) {
