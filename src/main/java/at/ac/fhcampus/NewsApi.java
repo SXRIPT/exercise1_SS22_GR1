@@ -34,14 +34,6 @@ public class NewsApi {
         return null;
     }
 
-    /*public static NewsResponse getTopHeadlinesAustria(String query) {
-        return request(buildUrlTopHeadlines(query, Country.AUSTRIA, null));
-    }
-
-    public static NewsResponse getAllNewsBitcoin(String query) {
-        return request(buildUrlEverything(query, null, null));
-    }*/
-
     private static HttpUrl.Builder buildBaseUrl(Endpoint endpoint) {
         return new HttpUrl.Builder()
                 .scheme("https")
