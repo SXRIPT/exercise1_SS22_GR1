@@ -5,7 +5,7 @@ import at.ac.fhcampus.enums.Country;
 import java.util.*;
 
 public class AppController {
-    private List<Article> articles;
+    private static List<Article> articles;
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
@@ -20,11 +20,16 @@ public class AppController {
     }
 
     public static NewsResponse getAllNewsBitcoin(String query) {
-        return NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
+        NewsResponse newsResponse = NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
+        articles = newsResponse.getArticles();
+        return newsResponse;
+
     }
 
     public static NewsResponse getTopHeadlinesAustria(String query) {
-        return NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
+        NewsResponse newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
+        articles = newsResponse.getArticles();
+        return newsResponse;
     }
     /*public List<Article> getTopHeadlinesAustria() {
         NewsApi newsApi = new NewsApi();
