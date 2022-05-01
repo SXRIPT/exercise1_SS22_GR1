@@ -33,18 +33,4 @@ public class AppController {
         return articles;
 
     }
-    /*
-    protected static List<Article> filterList(String query, List<Article> articles) {
-        return articles == null ?
-                Collections.emptyList() :
-                articles.stream()
-                        .filter(article -> article.getTitle().toLowerCase(Locale.ROOT).contains(query.toLowerCase(Locale.ROOT)))
-                        .toList();
-    }
-
-   private static List<Article> generateMockList() {
-        return Arrays.asList(new Article("New York Times", "Bitcoin smth", description, url, urlToImage, publishedAt, content),
-                new Article("Bild", "Österreich", description, url, urlToImage, publishedAt, content),
-                new Article("Günther", "Bitcoin 123", description, url, urlToImage, publishedAt, content));
-    } */
 }
