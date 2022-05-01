@@ -3,7 +3,7 @@ package at.ac.fhcampus;
 import java.util.Objects;
 
 public class Article {
-    private final String author;
+    private String author;
     private final String title;
     private final String description;
     private final String url;
@@ -63,6 +63,9 @@ public class Article {
 
     @Override
     public String toString() {
+        if(author == null){
+            this.author = "Unknown Author";
+        }
         return System.lineSeparator() + "Title: " + title + System.lineSeparator() +
                 "Author: " + author + System.lineSeparator() +
                 "Description: " + description + System.lineSeparator() +
