@@ -70,6 +70,7 @@ public class Article {
         }
         return
 
+               // System.lineSeparator() + "Source id: " + source.getId() +
                 System.lineSeparator() + "Source: " + source.getName() + System.lineSeparator() +
                 "Title: " + title + System.lineSeparator() +
                 "Author: " + author + System.lineSeparator() +
