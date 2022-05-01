@@ -2,8 +2,7 @@ package at.ac.fhcampus.enums;
 
 public enum Endpoint {
     EVERYTHING("everything"),
-    TOP_HEADLINES("top-headlines"),
-    SOURCES("top-headlines/sources");
+    TOP_HEADLINES("top-headlines");
 
     public final String label;
 
