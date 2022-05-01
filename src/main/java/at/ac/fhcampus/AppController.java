@@ -1,5 +1,7 @@
 package at.ac.fhcampus;
 
+import at.ac.fhcampus.enums.Country;
+
 import java.util.*;
 
 public class AppController {
@@ -17,10 +19,17 @@ public class AppController {
         return articles == null ? 0 : articles.size();
     }
 
+    public static NewsResponse getAllNewsBitcoin(String query) {
+        return NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
+    }
+
+    public static NewsResponse getTopHeadlinesAustria(String query) {
+        return NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
+    }
     /*public List<Article> getTopHeadlinesAustria() {
         NewsApi newsApi = new NewsApi();
         NewsResponse newsResponse;
-        newsResponse = newsApi.getTopHeadlinesAustria("corona");
+        newsResponse = newsApi.getTopHeadlinesAustria("Wien");
         articles = newsResponse.getArticles();
         return articles;
     }
@@ -31,5 +40,6 @@ public class AppController {
         newsResponse = newsApi.getAllNewsBitcoin("bitcoin");
         articles = newsResponse.getArticles();
         return articles;
-    } */
+    }*/
+
 }
