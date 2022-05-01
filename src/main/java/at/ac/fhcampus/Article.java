@@ -23,34 +23,6 @@ public class Article {
         this.source = source;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getUrlToImage() {
-        return urlToImage;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Article article)) return false;

@@ -32,7 +32,7 @@ public class Menu {
 
     private void getTopHeadlinesAustria(AppController ctrl) {
         List<Article> temp = ctrl.getTopHeadlinesAustria("Wien").getArticles();
-        if(temp.size() == 0) System.out.println(NO_RESULTS_MESSAGE);
+        if(temp.isEmpty()) System.out.println(NO_RESULTS_MESSAGE);
         for (Article article : temp) {
             System.out.println(article);
         }
