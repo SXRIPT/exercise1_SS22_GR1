@@ -7,6 +7,7 @@ public class Menu {
     private final AppController controller = new AppController();
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Please enter a letter from one of the given choices.";
     private static final String EXIT_MESSAGE = "Have a nice day!";
+    private static final String NO_RESULTS_MESSAGE = "No article was found.";
 
     public void start() {
         printMenu();
@@ -31,15 +32,16 @@ public class Menu {
 
     private void getTopHeadlinesAustria(AppController ctrl) {
         List<Article> temp = ctrl.getTopHeadlinesAustria();
-        for(int i = 0; i< temp.size(); i++){
-            System.out.println(temp.get(i));
+        if(temp.size() == 0) System.out.println(NO_RESULTS_MESSAGE);
+        for (Article article : temp) {
+            System.out.println(article);
         }
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
         List<Article> temp = ctrl.getAllNewsBitcoin();
-        for(int i = 0; i< temp.size(); i++){
-            System.out.println(temp.get(i));
+        for (Article article : temp) {
+            System.out.println(article);
         }
     }
 
