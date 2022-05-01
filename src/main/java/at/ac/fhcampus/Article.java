@@ -63,6 +63,12 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Title: " + title +", Author: " + author;
+        return System.lineSeparator() + "Title: " + title + System.lineSeparator() +
+                "Author: " + author + System.lineSeparator() +
+                "Description: " + description + System.lineSeparator() +
+                "Url: " + url + System.lineSeparator() +
+                "Image: " + urlToImage + System.lineSeparator() +
+                "Date: " + publishedAt + System.lineSeparator() +
+                "Content: " + content + System.lineSeparator();
     }
 }

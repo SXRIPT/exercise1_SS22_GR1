@@ -1,6 +1,7 @@
 package at.ac.fhcampus;
 
 import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
     private final AppController controller = new AppController();
@@ -29,11 +30,17 @@ public class Menu {
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
-        System.out.println(ctrl.getTopHeadlinesAustria());
+        List<Article> temp = ctrl.getTopHeadlinesAustria();
+        for(int i = 0; i< temp.size(); i++){
+            System.out.println(temp.get(i));
+        }
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
-        System.out.println(ctrl.getAllNewsBitcoin());
+        List<Article> temp = ctrl.getAllNewsBitcoin();
+        for(int i = 0; i< temp.size(); i++){
+            System.out.println(temp.get(i));
+        }
     }
 
     private static void printExitMessage() {
