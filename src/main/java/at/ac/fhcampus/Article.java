@@ -68,7 +68,10 @@ public class Article {
         if(author == null){
             this.author = "Unknown Author";
         }
-        return System.lineSeparator() + "Title: " + title + System.lineSeparator() +
+        return
+
+                System.lineSeparator() + "Source: " + source.getName() + System.lineSeparator() +
+                "Title: " + title + System.lineSeparator() +
                 "Author: " + author + System.lineSeparator() +
                 "Description: " + description + System.lineSeparator() +
                 "Url: " + url + System.lineSeparator() +
