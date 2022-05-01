@@ -14,10 +14,12 @@ import java.util.Objects;
 public class NewsApi {
     private static final String API_KEY = "aba5826bfd6a41ab980f009db6d19639";
 
-    private final OkHttpClient client = new OkHttpClient();
-    private final Gson gson = new Gson();
+    private static final OkHttpClient client = new OkHttpClient();
+    private static final Gson gson = new Gson();
 
-    private NewsResponse request(String url) {
+    private NewsApi() {}
+
+    private static NewsResponse request(String url) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -32,15 +34,15 @@ public class NewsApi {
         return null;
     }
 
-    public NewsResponse getTopHeadlinesAustria(String query) {                  //TODO: Make Static
+    public static NewsResponse getTopHeadlinesAustria(String query) {
         return request(buildUrlTopHeadlines(query, Country.AUSTRIA, null));
     }
 
-    public NewsResponse getAllNewsBitcoin(String query) {                           //TODO: Make Static
+    public static NewsResponse getAllNewsBitcoin(String query) {
         return request(buildUrlEverything(query, null, null));
     }
 
-    private HttpUrl.Builder buildBaseUrl(Endpoint endpoint) {
+    private static HttpUrl.Builder buildBaseUrl(Endpoint endpoint) {
         return new HttpUrl.Builder()
                 .scheme("https")
                 .host("newsapi.org")
@@ -49,8 +51,7 @@ public class NewsApi {
                 .addQueryParameter("apiKey", API_KEY);
     }
 
-    // HANLDE WRONG ENUMS
-    public String buildUrlEverything(String q, Language language, SortBy sortBy) {
+    public static String buildUrlEverything(String q, Language language, SortBy sortBy) {
         HttpUrl.Builder builder = buildBaseUrl(Endpoint.EVERYTHING);
 
         if(q != null) builder.addQueryParameter("q", q);
@@ -60,8 +61,9 @@ public class NewsApi {
         return builder.build().url().toString();
     }
 
-    public String buildUrlTopHeadlines(String q, Country country, Category category) {
+    public static String buildUrlTopHeadlines(String q, Country country, Category category) {
         HttpUrl.Builder builder = buildBaseUrl(Endpoint.TOP_HEADLINES);
+
         if(q != null) builder.addQueryParameter("q", q);
         if(country != null) builder.addQueryParameter("country", country.label);
         if(category != null) builder.addQueryParameter("category", category.label);
