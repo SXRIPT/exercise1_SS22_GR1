@@ -31,7 +31,7 @@ public class Menu {
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
-        List<Article> temp = ctrl.getTopHeadlinesAustria();
+        List<Article> temp = NewsApi.getTopHeadlinesAustria("Wien").getArticles();
         if(temp.size() == 0) System.out.println(NO_RESULTS_MESSAGE);
         for (Article article : temp) {
             System.out.println(article);
@@ -39,7 +39,7 @@ public class Menu {
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
-        List<Article> temp = ctrl.getAllNewsBitcoin();
+        List<Article> temp = NewsApi.getAllNewsBitcoin("bitcoin").getArticles();
         for (Article article : temp) {
             System.out.println(article);
         }

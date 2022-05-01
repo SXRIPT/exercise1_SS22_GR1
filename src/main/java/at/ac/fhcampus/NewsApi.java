@@ -19,7 +19,7 @@ public class NewsApi {
 
     private NewsApi() {}
 
-    private static NewsResponse request(String url) {
+    public static NewsResponse request(String url) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();

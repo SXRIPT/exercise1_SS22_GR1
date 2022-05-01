@@ -17,7 +17,7 @@ public class AppController {
         return articles == null ? 0 : articles.size();
     }
 
-    public List<Article> getTopHeadlinesAustria() {
+    /*public List<Article> getTopHeadlinesAustria() {
         NewsApi newsApi = new NewsApi();
         NewsResponse newsResponse;
         newsResponse = newsApi.getTopHeadlinesAustria("corona");
@@ -31,6 +31,5 @@ public class AppController {
         newsResponse = newsApi.getAllNewsBitcoin("bitcoin");
         articles = newsResponse.getArticles();
         return articles;
-
-    }
+    } */
 }
