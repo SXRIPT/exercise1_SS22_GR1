@@ -37,7 +37,7 @@ public class Menu {
     private void getArticleCount(AppController ctrl) {
         System.out.println("Number of articles: " + ctrl.getArticleCount());
     }
-
+    // welche source hat meiste artikel
     private void getProviderMostArticles(AppController ctrl){
 
     }
@@ -49,36 +49,18 @@ public class Menu {
                 .max(Comparator.comparingInt(String::length)).map(Object::toString).orElse("");
         System.out.println(name);
     }
-
+    // wie viele Artikel stammen von source "New York Times"
     private void getNYTArticles(AppController ctrl){
 
     }
-
+    // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){
 
     }
-
+    // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
 
     }
-
-    /*
-
-    // welche source hat meiste artikel
-    List<Article> ArticleListNew;
-    ArticleListNew = new List<Article>;
-Stream<Article> streamFromList = ArticleListNew.stream()
-        .map ()
-
-// welche autor längster name
-        .max (Comparator.comparingInt(Article.getAuthor()::getLength()))
-// wie viele Artikel stammen von source "New York Times"
-streamFromList.
-// welche artikel haben eine Headline die weniger als 15 Zeichen hat
-streamFromList.
-// sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
-streamFromList.
-     */
 
     private void getTopHeadlinesAustria(AppController ctrl) {
         if(ctrl.getTopHeadlinesAustria("Wien") == null) {
