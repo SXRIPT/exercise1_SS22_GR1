@@ -59,7 +59,7 @@ public class Article {
     @Override
     public String toString() {
         if(author == null){
-            this.author = "Unknown Author";
+            this.author = "null";
         }
         return
 

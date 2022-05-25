@@ -43,11 +43,11 @@ public class Menu {
     }
 
     private void getLongestAuthor(AppController ctrl){
-        List<Article> ArticleListNew;
-        ArticleListNew = new ArrayList<Article>();
-        Stream<Article> streamFromList = ArticleListNew.stream()
-                .max(Comparator.comparingInt(Article.getAuthor()));
-
+        String name = ctrl.getArticles()
+                .stream()
+                .map(Article::getAuthor)
+                .max(Comparator.comparingInt(String::length)).map(Object::toString).orElse("");
+        System.out.println(name);
     }
 
     private void getNYTArticles(AppController ctrl){
