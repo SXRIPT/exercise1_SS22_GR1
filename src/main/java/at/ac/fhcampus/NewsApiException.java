@@ -1,4 +1,5 @@
 package at.ac.fhcampus;
 
-public class NewsApiException {
+public class NewsApiException extends Exception{
+
 }
