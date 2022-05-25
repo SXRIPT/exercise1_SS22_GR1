@@ -45,6 +45,7 @@ public class Article {
         laenge = description.length();
         return laenge;
     }
+    
 
     @Override
     public boolean equals(Object obj) {

@@ -2,6 +2,8 @@ package at.ac.fhcampus;
 
 import java.util.Scanner;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Menu {
@@ -39,7 +41,12 @@ public class Menu {
     }
     // welche source hat meiste artikel
     private void getProviderMostArticles(AppController ctrl){
-
+        ctrl.getArticles()
+                .stream()
+                .map(article -> article.getSource().getName())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream().max(Map.Entry.comparingByValue())
+                .ifPresent(System.out::println);
     }
 
     private void getLongestAuthor(AppController ctrl){
