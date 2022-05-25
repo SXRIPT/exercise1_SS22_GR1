@@ -37,10 +37,12 @@ public class Menu {
     }
 
     private void getArticleCount(AppController ctrl) {
+        if(checkGetArticles(ctrl)) return;
         System.out.println("Number of articles: " + ctrl.getArticleCount());
     }
     // welche source hat meiste artikel
     private void getProviderMostArticles(AppController ctrl){
+        if(checkGetArticles(ctrl)) return;
         ctrl.getArticles()
                 .stream()
                 .map(article -> article.getSource().getName())
@@ -50,6 +52,7 @@ public class Menu {
     }
 
     private void getLongestAuthor(AppController ctrl){
+        if(checkGetArticles(ctrl)) return;
         String name = ctrl.getArticles()
                 .stream()
                 .map(Article::getAuthor)
@@ -58,6 +61,7 @@ public class Menu {
     }
     // wie viele Artikel stammen von source "New York Times"
     private void getNYTArticles(AppController ctrl){
+        if(checkGetArticles(ctrl)) return;
         int anzahl = (int) ctrl.getArticles()
                 .stream()
                 .map(Article::getSource)
@@ -67,6 +71,7 @@ public class Menu {
     }
     // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){
+        if(checkGetArticles(ctrl)) return;
         ctrl.getArticles()
                 .stream()
                 .filter(article -> article.getTitle().length() < 15)
@@ -74,6 +79,7 @@ public class Menu {
     }
     // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
+        if(checkGetArticles(ctrl)) return;
         ctrl.getArticles()
                 .stream()
                 .sorted((Comparator.comparingInt(Article::getDescriptionLength).thenComparing(Article::getDescription)))
@@ -114,6 +120,13 @@ public class Menu {
         System.out.println(INVALID_INPUT_MESSAGE);
     }
 
+    private boolean checkGetArticles(AppController ctrl){
+        if (ctrl.getArticles() == null){
+            System.out.println("Please select a or b to load Articles first!!");
+            return true;
+        }
+        return false;
+    }
     private static void printMenu() {
         System.out.println("############################");
         System.out.println("#    Welcome to NewsApp    #");
