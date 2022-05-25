@@ -1,6 +1,16 @@
 package at.ac.fhcampus;
 
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.EditorKit;
+import javax.swing.text.html.HTMLEditorKit;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Article {
     private String author;
@@ -72,6 +82,11 @@ public class Article {
         if(author == null){
             this.author = "null";
         }
+        /*try {
+            save(new URL(this.url));
+        } catch (IOException | BadLocationException e) {
+            e.printStackTrace();
+        }*/
         return
 
                // System.lineSeparator() + "Source id: " + source.getId() +
@@ -85,5 +100,21 @@ public class Article {
                 "Content: " + content + System.lineSeparator();
     }
 
+    public void save(URL url) throws IOException, BadLocationException {
 
+        EditorKit kit = new HTMLEditorKit();
+        Document doc = kit.createDefaultDocument();
+        doc.putProperty("IgnoreCharsetDirective", Boolean.TRUE);
+
+        Reader rd = new InputStreamReader(url.openConnection().getInputStream());
+
+        kit.read(rd, doc, 0);
+
+       FileWriter writer = new FileWriter("output.txt");
+        Scanner sc = new Scanner(url.openStream());
+        StringBuffer sb = new StringBuffer();
+        writer.write(doc.getText(0, doc.getLength()) );
+        writer.close();
+
+    }
 }
