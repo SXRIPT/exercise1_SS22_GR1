@@ -23,9 +23,9 @@ public class Article {
         this.source = source;
     }
     public int getAuthorLength(){
-        int laenge;
-        laenge = author.length();
-        return laenge;
+        int length;
+        length = author.length();
+        return length;
     }
 
     public String getAuthor(){
@@ -35,15 +35,19 @@ public class Article {
         return source;
     }
     public int getTitleLength(){
-        int laenge;
-        laenge = title.length();
-        return laenge;
+        int length;
+        length = title.length();
+        return length;
     }
 
     public int getDescriptionLength(){
-        int laenge;
-        laenge = description.length();
-        return laenge;
+        int length;
+        length = description.length();
+        return length;
+    }
+
+    public String getTitle() {
+        return title;
     }
     
 

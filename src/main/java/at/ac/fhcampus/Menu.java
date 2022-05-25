@@ -67,10 +67,16 @@ public class Menu {
     }
     // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){
+        ctrl.getArticles()
+                .stream()
+                .filter(Article -> Article.getTitle().length() < 15)
+                .forEach(System.out::println);
+
 
     }
     // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
+
 
     }
 
