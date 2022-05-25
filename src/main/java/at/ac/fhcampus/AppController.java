@@ -20,7 +20,12 @@ public class AppController {
     }
 
     public NewsResponse getAllNewsBitcoin(String query) {
-        NewsResponse newsResponse = NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
+        NewsResponse newsResponse = null;
+        try {
+            newsResponse = NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
+        } catch (NewsApiException e) {
+            System.out.println(e.getMessage());
+        }
         if(newsResponse != null) {
             setArticles(newsResponse.getArticles());
         }
@@ -28,7 +33,13 @@ public class AppController {
     }
 
     public NewsResponse getTopHeadlinesAustria(String query) {
-        NewsResponse newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
+        NewsResponse newsResponse = null;
+        try {
+            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
+        } catch (NewsApiException e) {
+            System.out.println(e.getMessage());
+        }
+
         if(newsResponse != null) {
             setArticles(newsResponse.getArticles());
         }

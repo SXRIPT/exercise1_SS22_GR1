@@ -9,6 +9,7 @@ import okhttp3.Response;
 
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class NewsApi {
 
     private NewsApi() {}
 
-    public static NewsResponse request(String url) {
+    public static NewsResponse request(String url) throws NewsApiException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -31,9 +32,11 @@ public class NewsApi {
                 return gson.fromJson(json, NewsResponse.class);
             }
         } catch (UnknownHostException e) {
-            System.out.println("Unknown Host exception");
+            throw new NewsApiException("Unknown Host exception " + e.getMessage());
+        } catch (SocketTimeoutException e) {
+            throw new NewsApiException("Socket Timeout exception " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new NewsApiException("IOException " + e.getMessage());
         }
 
         return null;
