@@ -19,6 +19,13 @@ public class Menu {
         switch (input) {
             case "a" -> getTopHeadlinesAustria(controller);
             case "b" -> getAllNewsBitcoin(controller);
+            // case "c" -> ;
+            // case "d" -> ;
+            case "e" -> getProviderMostArticles(controller);
+            case "f" -> getLongestAuthor(controller);
+            case "g" -> getNYTArticles(controller);
+            case "h" -> getShortHeadline(controller);
+            case "i" -> sortArticles(controller);
             case "y" -> getArticleCount(controller);
             case "q" -> printExitMessage();
             default -> printInvalidInputMessage();
@@ -28,6 +35,26 @@ public class Menu {
 
     private void getArticleCount(AppController ctrl) {
         System.out.println("Number of articles: " + ctrl.getArticleCount());
+    }
+
+    private void getProviderMostArticles(AppController ctrl){
+
+    }
+
+    private void getLongestAuthor(AppController ctrl){
+
+    }
+
+    private void getNYTArticles(AppController ctrl){
+
+    }
+
+    private void getShortHeadline(AppController ctrl){
+
+    }
+
+    private void sortArticles(AppController ctrl){
+
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
@@ -71,6 +98,13 @@ public class Menu {
         System.out.println("Please enter what you wanna do:");
         System.out.println("a: Get top headlines austria");
         System.out.println("b: get all news about bitcoin");
+        System.out.println("c: Count articles");
+        System.out.println("d: Count articles");
+        System.out.println("e: Get the Provider with the most Articles");
+        System.out.println("f: Get the Author with the longest name");
+        System.out.println("g: Get the New York Times Articles");
+        System.out.println("h: Get short headline Articles");
+        System.out.println("i: Sort the articles shortest to longest");
         System.out.println("y: Count articles");
         System.out.println("q: Quit program");
     }
