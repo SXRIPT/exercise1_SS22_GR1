@@ -2,6 +2,7 @@ package at.ac.fhcampus;
 
 import java.util.Scanner;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Menu {
     private final AppController controller = new AppController();
@@ -42,6 +43,10 @@ public class Menu {
     }
 
     private void getLongestAuthor(AppController ctrl){
+        List<Article> ArticleListNew;
+        ArticleListNew = new ArrayList<Article>();
+        Stream<Article> streamFromList = ArticleListNew.stream()
+                .max(Comparator.comparingInt(Article.getAuthor()));
 
     }
 

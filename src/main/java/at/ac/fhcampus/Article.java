@@ -28,6 +28,10 @@ public class Article {
         return laenge;
     }
 
+    public String getAuthor(){
+        return author;
+    }
+
     public int getTitleLength(){
         int laenge;
         laenge = title.length();
