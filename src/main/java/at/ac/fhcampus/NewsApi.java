@@ -9,6 +9,7 @@ import okhttp3.Response;
 
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.Objects;
 
 public class NewsApi {
@@ -27,7 +28,9 @@ public class NewsApi {
         try (Response response = client.newCall(request).execute()) {
                 String json = Objects.requireNonNull(response.body()).string();
                 return gson.fromJson(json, NewsResponse.class);
-        } catch (IOException | NullPointerException e) {
+        } catch (UnknownHostException e) {
+            System.out.println("Unknown Host exception");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
