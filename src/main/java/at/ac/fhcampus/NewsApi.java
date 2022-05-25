@@ -30,13 +30,19 @@ public class NewsApi {
             if(response.code() >= 200 && response.code() <= 299) {
                 String json = Objects.requireNonNull(response.body()).string();
                 return gson.fromJson(json, NewsResponse.class);
+            } else if (response.code() != 404) {
+                String json = Objects.requireNonNull(response.body()).string();
+                NewsErrorResponse newsErrorResponse = gson.fromJson(json, NewsErrorResponse.class);
+                throw new NewsApiException(newsErrorResponse.getMessage());
+            } else if(response.code() == 404) {
+                throw new NewsApiException("URL not found: " + url);
             }
         } catch (UnknownHostException e) {
-            throw new NewsApiException("Unknown Host exception " + e.getMessage());
+            throw new NewsApiException("Unknown Host exception - " + e.getMessage());
         } catch (SocketTimeoutException e) {
-            throw new NewsApiException("Socket Timeout exception " + e.getMessage());
+            throw new NewsApiException("Socket Timeout exception - " + e.getMessage());
         } catch (IOException e) {
-            throw new NewsApiException("IOException " + e.getMessage());
+            throw new NewsApiException("IOException - " + e.getMessage());
         }
 
         return null;
