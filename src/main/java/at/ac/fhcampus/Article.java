@@ -49,6 +49,10 @@ public class Article {
     public String getTitle() {
         return title;
     }
+
+    public String getDescription() {
+        return description;
+    }
     
 
     @Override
@@ -80,4 +84,6 @@ public class Article {
                 "Date: " + publishedAt + System.lineSeparator() +
                 "Content: " + content + System.lineSeparator();
     }
+
+
 }

@@ -69,14 +69,11 @@ public class Menu {
     private void getShortHeadline(AppController ctrl){
         ctrl.getArticles()
                 .stream()
-                .filter(Article -> Article.getTitle().length() < 15)
+                .filter(article -> article.getTitle().length() < 15)
                 .forEach(System.out::println);
-
-
     }
     // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
-
 
     }
 
