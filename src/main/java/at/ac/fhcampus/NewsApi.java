@@ -38,11 +38,12 @@ public class NewsApi {
                 throw new NewsApiException("URL not found: " + url);
             }
         } catch (UnknownHostException e) {
-            throw new NewsApiException("Unknown Host exception - " + e.getMessage());
+            System.out.println(e.getMessage());
         } catch (SocketTimeoutException e) {
-            throw new NewsApiException("Socket Timeout exception - " + e.getMessage());
+            System.out.println(e.getMessage());
         } catch (IOException e) {
-            throw new NewsApiException("IOException - " + e.getMessage());
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         return null;
