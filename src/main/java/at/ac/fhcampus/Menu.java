@@ -51,7 +51,13 @@ public class Menu {
     }
     // wie viele Artikel stammen von source "New York Times"
     private void getNYTArticles(AppController ctrl){
-
+        int anzahl = (int) ctrl.getArticles()
+                .stream()
+                .map(Article::getSource)
+                .filter(source -> source.getName().equals("New York Times"))
+                .count();
+                //.max(Comparator.comparingInt(String::length)).map(Object::toString).orElse("");
+        System.out.println(anzahl);
     }
     // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){

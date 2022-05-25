@@ -31,7 +31,9 @@ public class Article {
     public String getAuthor(){
         return author;
     }
-
+    public Source getSource(){
+        return source;
+    }
     public int getTitleLength(){
         int laenge;
         laenge = title.length();
