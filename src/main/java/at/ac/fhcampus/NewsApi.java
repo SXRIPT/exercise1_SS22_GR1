@@ -26,8 +26,10 @@ public class NewsApi {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
+            if(response.code() >= 200 && response.code() <= 299) {
                 String json = Objects.requireNonNull(response.body()).string();
                 return gson.fromJson(json, NewsResponse.class);
+            }
         } catch (UnknownHostException e) {
             System.out.println("Unknown Host exception");
         } catch (IOException e) {

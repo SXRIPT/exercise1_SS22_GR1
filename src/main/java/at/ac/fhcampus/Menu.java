@@ -31,12 +31,12 @@ public class Menu {
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
-        List<Article> temp = ctrl.getTopHeadlinesAustria("Wien").getArticles();
-
-        if(temp == null) {
+        if(ctrl.getTopHeadlinesAustria("Wien") == null) {
             System.out.println(NO_RESULTS_MESSAGE);
             return;
         }
+
+        List<Article> temp = ctrl.getTopHeadlinesAustria("Wien").getArticles();
 
         for (Article article : temp) {
             System.out.println(article);
@@ -44,12 +44,12 @@ public class Menu {
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
-        List<Article> temp = ctrl.getAllNewsBitcoin("bitcoin").getArticles();
-
-        if(temp == null) {
+        if(ctrl.getAllNewsBitcoin("bitcoin") == null) {
             System.out.println(NO_RESULTS_MESSAGE);
             return;
         }
+
+        List<Article> temp = ctrl.getAllNewsBitcoin("bitcoin").getArticles();
 
         for (Article article : temp) {
             System.out.println(article);
