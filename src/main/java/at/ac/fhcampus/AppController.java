@@ -45,4 +45,37 @@ public class AppController {
         }
         return newsResponse;
     }
+
+    public NewsResponse getIndividualCountry(String country){
+        NewsResponse newsResponse = null;
+        try {
+            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(null, Country.valueOf(country), null));
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("Country not found!");
+        }
+        catch (NewsApiException e) {
+            System.out.println(e.getMessage());
+        }
+
+        if(newsResponse != null) {
+            setArticles(newsResponse.getArticles());
+        }
+        return newsResponse;
+    }
+
+    public NewsResponse getIndividualQuery(String query){
+        NewsResponse newsResponse = null;
+        try {
+            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, null, null));
+        }
+        catch (NewsApiException e) {
+            System.out.println(e.getMessage());
+        }
+
+        if(newsResponse != null) {
+            setArticles(newsResponse.getArticles());
+        }
+        return newsResponse;
+    }
 }

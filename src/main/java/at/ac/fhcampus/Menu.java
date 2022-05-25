@@ -22,8 +22,8 @@ public class Menu {
         switch (input) {
             case "a" -> getTopHeadlinesAustria(controller);
             case "b" -> getAllNewsBitcoin(controller);
-            // case "c" -> ;
-            // case "d" -> ;
+            case "c" -> getIndividualCountry(controller);
+            case "d" -> getIndividualQuery(controller);
             case "e" -> getProviderMostArticles(controller);
             case "f" -> getLongestAuthor(controller);
             case "g" -> getNYTArticles(controller);
@@ -106,6 +106,40 @@ public class Menu {
         }
 
         List<Article> temp = ctrl.getAllNewsBitcoin("bitcoin").getArticles();
+
+        for (Article article : temp) {
+            System.out.println(article);
+        }
+    }
+
+    private void getIndividualCountry(AppController ctrl){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your Country: ");
+        String country = scanner.nextLine().toUpperCase();
+
+        if(ctrl.getIndividualCountry(country) == null){
+            System.out.println(NO_RESULTS_MESSAGE);
+            return;
+        }
+
+        List<Article> temp = ctrl.getIndividualCountry(country).getArticles();
+
+        for (Article article : temp) {
+            System.out.println(article);
+        }
+    }
+
+    private void getIndividualQuery(AppController ctrl){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter your Query: ");
+        String query = scanner.nextLine();
+
+        if(ctrl.getIndividualQuery(query) == null){
+            System.out.println(NO_RESULTS_MESSAGE);
+            return;
+        }
+
+        List<Article> temp = ctrl.getIndividualQuery(query).getArticles();
 
         for (Article article : temp) {
             System.out.println(article);
