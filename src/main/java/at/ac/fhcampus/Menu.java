@@ -32,7 +32,12 @@ public class Menu {
 
     private void getTopHeadlinesAustria(AppController ctrl) {
         List<Article> temp = ctrl.getTopHeadlinesAustria("Wien").getArticles();
-        if(temp.isEmpty()) System.out.println(NO_RESULTS_MESSAGE);
+
+        if(temp == null) {
+            System.out.println(NO_RESULTS_MESSAGE);
+            return;
+        }
+
         for (Article article : temp) {
             System.out.println(article);
         }
@@ -40,6 +45,12 @@ public class Menu {
 
     private void getAllNewsBitcoin(AppController ctrl) {
         List<Article> temp = ctrl.getAllNewsBitcoin("bitcoin").getArticles();
+
+        if(temp == null) {
+            System.out.println(NO_RESULTS_MESSAGE);
+            return;
+        }
+
         for (Article article : temp) {
             System.out.println(article);
         }
