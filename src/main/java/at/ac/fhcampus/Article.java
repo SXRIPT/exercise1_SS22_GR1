@@ -22,6 +22,23 @@ public class Article {
         this.content = content;
         this.source = source;
     }
+    public int getAuthorLength(){
+        int laenge;
+        laenge = author.length();
+        return laenge;
+    }
+
+    public int getTitleLength(){
+        int laenge;
+        laenge = title.length();
+        return laenge;
+    }
+
+    public int getDescriptionLength(){
+        int laenge;
+        laenge = description.length();
+        return laenge;
+    }
 
     @Override
     public boolean equals(Object obj) {
