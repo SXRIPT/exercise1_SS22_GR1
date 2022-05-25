@@ -74,7 +74,10 @@ public class Menu {
     }
     // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
-
+        ctrl.getArticles()
+                .stream()
+                .sorted((Comparator.comparingInt(Article::getDescriptionLength).thenComparing(Article::getDescription)))
+                .forEach(System.out::println);
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
