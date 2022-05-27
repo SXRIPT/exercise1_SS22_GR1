@@ -167,9 +167,9 @@ public class Menu {
         System.out.println("############################");
         System.out.println("Please enter what you wanna do:");
         System.out.println("a: Get top headlines austria");
-        System.out.println("b: get all news about bitcoin");
-        System.out.println("c: Count articles");
-        System.out.println("d: Count articles");
+        System.out.println("b: Get all news about bitcoin");
+        System.out.println("c: Get top headlines by Country");
+        System.out.println("d: Get headlines by your query");
         System.out.println("e: Get the Provider with the most Articles");
         System.out.println("f: Get the Author with the longest name");
         System.out.println("g: Get the New York Times Articles");
