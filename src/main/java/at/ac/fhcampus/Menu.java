@@ -32,6 +32,10 @@ public class Menu {
         catch(NewsApiException e){
             System.out.println(e.getMessage());
         }
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            start();
+        }
     }
 
     private void handleSpecialInput(String input) {
