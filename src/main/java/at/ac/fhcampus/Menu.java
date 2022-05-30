@@ -18,14 +18,19 @@ public class Menu {
     }
 
     private void handleInput(String input) {
-        switch (input) {
-            case "a" -> getTopHeadlinesAustria(controller);
-            case "b" -> getAllNewsBitcoin(controller);
-            case "c" -> getIndividualCountry(controller);
-            case "d" -> getIndividualQuery(controller);
-            case "y" -> getArticleCount(controller);
-            case "q" -> printExitMessage();
-            default -> handleSpecialInput(input);
+        try {
+            switch (input) {
+                case "a" -> getTopHeadlinesAustria(controller);
+                case "b" -> getAllNewsBitcoin(controller);
+                case "c" -> getIndividualCountry(controller);
+                case "d" -> getIndividualQuery(controller);
+                case "y" -> getArticleCount(controller);
+                case "q" -> printExitMessage();
+                default -> handleSpecialInput(input);
+            }
+        }
+        catch(NewsApiException e){
+            System.out.println(e.getMessage());
         }
     }
 
