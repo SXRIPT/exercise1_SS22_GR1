@@ -19,26 +19,10 @@ public class AppController {
         return articles == null ? 0 : articles.size();
     }
 
-    public NewsResponse getAllNewsBitcoin(String query) {
+    public NewsResponse getAllNewsBitcoin(String query) throws NewsApiException{
         NewsResponse newsResponse = null;
-        try {
-            newsResponse = NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
-        } catch (NewsApiException e) {
-            System.out.println(e.getMessage());
-        }
-        if(newsResponse != null) {
-            setArticles(newsResponse.getArticles());
-        }
-        return newsResponse;
-    }
 
-    public NewsResponse getTopHeadlinesAustria(String query) {
-        NewsResponse newsResponse = null;
-        try {
-            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
-        } catch (NewsApiException e) {
-            System.out.println(e.getMessage());
-        }
+        newsResponse = NewsApi.request(NewsApi.buildUrlEverything(query, null, null));
 
         if(newsResponse != null) {
             setArticles(newsResponse.getArticles());
@@ -46,17 +30,10 @@ public class AppController {
         return newsResponse;
     }
 
-    public NewsResponse getIndividualCountry(String country){
+    public NewsResponse getTopHeadlinesAustria(String query) throws NewsApiException {
         NewsResponse newsResponse = null;
-        try {
-            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(null, Country.valueOf(country), null));
-        }
-        catch(IllegalArgumentException e){
-            System.out.println("Country not found!");
-        }
-        catch (NewsApiException e) {
-            System.out.println(e.getMessage());
-        }
+
+        newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, Country.AUSTRIA, null));
 
         if(newsResponse != null) {
             setArticles(newsResponse.getArticles());
@@ -64,14 +41,22 @@ public class AppController {
         return newsResponse;
     }
 
-    public NewsResponse getIndividualQuery(String query){
+    public NewsResponse getIndividualCountry(String country) throws NewsApiException, IllegalArgumentException{
         NewsResponse newsResponse = null;
-        try {
-            newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, null, null));
+
+        newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(null, Country.valueOf(country), null));
+
+        if(newsResponse != null) {
+            setArticles(newsResponse.getArticles());
         }
-        catch (NewsApiException e) {
-            System.out.println(e.getMessage());
-        }
+        return newsResponse;
+    }
+
+    public NewsResponse getIndividualQuery(String query) throws NewsApiException{
+        NewsResponse newsResponse = null;
+
+        newsResponse = NewsApi.request(NewsApi.buildUrlTopHeadlines(query, null, null));
+
 
         if(newsResponse != null) {
             setArticles(newsResponse.getArticles());
