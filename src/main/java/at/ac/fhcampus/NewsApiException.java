@@ -19,7 +19,4 @@ public class NewsApiException extends Exception {
         e.printStackTrace();
     }
 
-    public NewsApiException(IllegalArgumentException e){
-        super(e.getMessage());
-    }
 }

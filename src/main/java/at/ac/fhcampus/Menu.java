@@ -2,8 +2,6 @@ package at.ac.fhcampus;
 
 import java.util.Scanner;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Menu {
     private final AppController controller = new AppController();
@@ -61,7 +59,6 @@ public class Menu {
         if(checkGetArticles(ctrl)) return;
         System.out.println("Number of articles: " + ctrl.getArticleCount());
     }
-    // welche source hat meiste artikel
     private void getProviderMostArticles(AppController ctrl){
         ctrl.getProviderMostArticles();
     }
@@ -69,15 +66,12 @@ public class Menu {
     private void getLongestAuthor(AppController ctrl){
         System.out.println(ctrl.getLongestAuthor());
     }
-    // wie viele Artikel stammen von source "New York Times"
     private void getNYTArticles(AppController ctrl){
         ctrl.getNYTArticles();
     }
-    // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){
         ctrl.getShortHeadline().forEach(System.out::println);
     }
-    // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
         ctrl.sortArticles().forEach(System.out::println);
     }
