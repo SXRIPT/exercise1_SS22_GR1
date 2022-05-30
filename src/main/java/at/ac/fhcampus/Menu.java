@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Menu {
     private final AppController controller = new AppController();
@@ -74,7 +73,7 @@ public class Menu {
         ctrl.sortArticles().forEach(System.out::println);
     }
 
-    private void getTopHeadlinesAustria(AppController ctrl) {
+    private void getTopHeadlinesAustria(AppController ctrl)throws NewsApiException {
         if(ctrl.getTopHeadlinesAustria("Wien") == null) {
             System.out.println(NO_RESULTS_MESSAGE);
             return;
@@ -87,7 +86,7 @@ public class Menu {
         }
     }
 
-    private void getAllNewsBitcoin(AppController ctrl) {
+    private void getAllNewsBitcoin(AppController ctrl) throws NewsApiException {
         if(ctrl.getAllNewsBitcoin("bitcoin") == null) {
             System.out.println(NO_RESULTS_MESSAGE);
             return;
@@ -100,7 +99,7 @@ public class Menu {
         }
     }
 
-    private void getIndividualCountry(AppController ctrl){
+    private void getIndividualCountry(AppController ctrl)throws NewsApiException{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your Country: ");
         String country = scanner.nextLine().toUpperCase();
@@ -117,7 +116,7 @@ public class Menu {
         }
     }
 
-    private void getIndividualQuery(AppController ctrl){
+    private void getIndividualQuery(AppController ctrl)throws NewsApiException{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your Query: ");
         String query = scanner.nextLine();
