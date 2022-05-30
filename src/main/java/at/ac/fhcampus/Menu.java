@@ -24,17 +24,30 @@ public class Menu {
             case "b" -> getAllNewsBitcoin(controller);
             case "c" -> getIndividualCountry(controller);
             case "d" -> getIndividualQuery(controller);
+            case "y" -> getArticleCount(controller);
+            case "q" -> printExitMessage();
+            default -> handleSpecialInput(input);
+        }
+    }
+
+    private void handleSpecialInput(String input) {
+        if(controller.getArticles() == null) {
+            System.out.println("No articles found fetch articles before using!");
+            start();
+        }
+
+        switch (input) {
             case "e" -> getProviderMostArticles(controller);
             case "f" -> getLongestAuthor(controller);
             case "g" -> getNYTArticles(controller);
             case "h" -> getShortHeadline(controller);
             case "i" -> sortArticles(controller);
-            case "y" -> getArticleCount(controller);
-            case "q" -> printExitMessage();
             default -> printInvalidInputMessage();
         }
+
         if(!input.equals("q")) start();
     }
+
 
     private void getArticleCount(AppController ctrl) {
         if(checkGetArticles(ctrl)) return;
@@ -42,48 +55,23 @@ public class Menu {
     }
     // welche source hat meiste artikel
     private void getProviderMostArticles(AppController ctrl){
-        if(checkGetArticles(ctrl)) return;
-        ctrl.getArticles()
-                .stream()
-                .map(article -> article.getSource().getName())
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream().max(Map.Entry.comparingByValue())
-                .ifPresent(System.out::println);
+        ctrl.getProviderMostArticles();
     }
 
     private void getLongestAuthor(AppController ctrl){
-        if(checkGetArticles(ctrl)) return;
-        String name = ctrl.getArticles()
-                .stream()
-                .map(Article::getAuthor)
-                .max(Comparator.comparingInt(String::length)).map(Object::toString).orElse("");
-        System.out.println(name);
+        System.out.println(ctrl.getLongestAuthor());
     }
     // wie viele Artikel stammen von source "New York Times"
     private void getNYTArticles(AppController ctrl){
-        if(checkGetArticles(ctrl)) return;
-        int anzahl = (int) ctrl.getArticles()
-                .stream()
-                .map(Article::getSource)
-                .filter(source -> source.getName().equals("New York Times"))
-                .count();
-        System.out.println(anzahl);
+        ctrl.getNYTArticles();
     }
     // welche artikel haben eine Headline die weniger als 15 Zeichen hat
     private void getShortHeadline(AppController ctrl){
-        if(checkGetArticles(ctrl)) return;
-        ctrl.getArticles()
-                .stream()
-                .filter(article -> article.getTitle().length() < 15)
-                .forEach(System.out::println);
+        ctrl.getShortHeadline().forEach(System.out::println);
     }
     // sortiert die Artikel nach der Länge ihrer Beschreibung aufsteigend; bei gleich alphabetisch
     private void sortArticles(AppController ctrl){
-        if(checkGetArticles(ctrl)) return;
-        ctrl.getArticles()
-                .stream()
-                .sorted((Comparator.comparingInt(Article::getDescriptionLength).thenComparing(Article::getDescription)))
-                .forEach(System.out::println);
+        ctrl.sortArticles().forEach(System.out::println);
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
