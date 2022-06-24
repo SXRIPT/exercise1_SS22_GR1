@@ -22,7 +22,7 @@ public class Article {
     private final String content;
     private final Source source;
 
-    public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content, Source source) {
+    /*public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content, Source source) {
         this.author = author;
         this.title = title;
         this.description = description;
@@ -31,7 +31,68 @@ public class Article {
         this.publishedAt = publishedAt;
         this.content = content;
         this.source = source;
+    }*/
+
+    public Article(Builder builder) {
+        this.author = builder.author;
+        this.title = builder.title;
+        this.description = builder.description;
+        this.url = builder.url;
+        this.urlToImage = builder.urlToImage;
+        this.publishedAt = builder.publishedAt;
+        this.content = builder.content;
+        this.source = builder.source;
     }
+
+    public static class Builder{
+        private final String author;
+        private final String title;
+        private String description;
+        private String url;
+        private String urlToImage;
+        private String publishedAt;
+        private String content;
+        private Source source;
+
+        public Builder(String author, String title){
+            this.author = author;
+            this.title = title;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+
+        public Builder urlToImage(String urlToImage) {
+            this.urlToImage = urlToImage;
+            return this;
+        }
+
+        public Builder publishedAt(String publishedAt) {
+            this.publishedAt = publishedAt;
+            return this;
+        }
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public Builder source(Source source) {
+            this.source = source;
+            return this;
+        }
+
+
+
+    }
+
     public int getAuthorLength(){
         int length;
         length = author.length();
