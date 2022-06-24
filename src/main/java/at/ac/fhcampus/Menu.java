@@ -155,7 +155,6 @@ public class Menu {
     private void downloadURLs(){
         try {
             int resultSequential = controller.downloadURLs(new SequentialDownloader());
-            System.out.println("ANY TIME");
             // TODO print time in ms it took to download URLs sequentially
 
             // TODO implement the process() function in ParallelDownloader class
@@ -198,6 +197,7 @@ public class Menu {
         System.out.println("g: Get the New York Times Articles");
         System.out.println("h: Get short headline Articles");
         System.out.println("i: Sort the articles shortest to longest");
+        System.out.println("j: Download URLs");
         System.out.println("y: Count articles");
         System.out.println("q: Quit program");
     }

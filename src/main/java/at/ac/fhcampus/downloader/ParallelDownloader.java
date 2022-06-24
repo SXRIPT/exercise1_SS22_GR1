@@ -1,6 +1,8 @@
 package at.ac.fhcampus.downloader;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.*;
 
 // Class is needed for exercise 4 - ignore for exercise 3 solution
 public class ParallelDownloader extends Downloader{
@@ -12,9 +14,30 @@ public class ParallelDownloader extends Downloader{
         // Hint: use ExecutorService with Callables
         long currTime = System.currentTimeMillis();
 
+        int numWorkers = Runtime.getRuntime().availableProcessors();
+        ExecutorService pool = Executors.newFixedThreadPool(numWorkers);
+
+        List<Future<String>> futures = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            int idx = i;
+            Callable<String> task = () -> (saveUrl2File(urls.get(idx)));
+            futures.add(pool.submit(task));
+        }
+        List<String> results = new ArrayList<>();
+        for(Future<String> result : futures){
+            try {
+                if(result.get() != null){
+                    results.add(result.get());
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
 
         long currTime2 = System.currentTimeMillis();
-        System.out.println("The runtime for the Sequential Download in milliseconds is: " + (currTime2-currTime));
+        System.out.println("The runtime for the Parallel Download in milliseconds is: " + (currTime2-currTime));
         return 0;
     }
 }
