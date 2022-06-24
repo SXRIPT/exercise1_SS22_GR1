@@ -1,6 +1,7 @@
 package at.ac.fhcampus;
 
 import at.ac.fhcampus.enums.Country;
+import at.ac.fhcampus.downloader.Downloader;
 
 import java.util.*;
 import java.util.function.Function;
@@ -114,5 +115,19 @@ public class AppController {
                 .stream()
                 .sorted((Comparator.comparingInt(Article::getDescriptionLength).thenComparing(Article::getDescription)))
                 .toList();
+    }
+
+    public int downloadURLs(Downloader downloader) throws NewsApiException{
+        if( articles == null)
+            throw new NewsApiException("No Articles");
+
+        List<String> urls = new ArrayList<>();
+
+        articles.stream().map(Article::getURL).toList().forEach(downloader.saveUrl2File());
+
+
+        // TODO extract urls from articles with java stream
+
+        return downloader.process(urls);
     }
 }
