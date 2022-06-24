@@ -4,10 +4,20 @@ import java.util.Scanner;
 import java.util.*;
 
 public class Menu {
-    private final AppController controller = new AppController();
+    private static Menu instance = null;
+    private final AppController controller = AppController.getInstance();
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Please enter a letter from one of the given choices.";
     private static final String EXIT_MESSAGE = "Have a nice day!";
     private static final String NO_RESULTS_MESSAGE = "No article was found.";
+
+    private Menu(){}
+
+    public static Menu getInstance(){
+        if(instance == null){
+            instance = new Menu();
+        }
+        return instance;
+    }
 
     public void start() {
         printMenu();
@@ -34,6 +44,7 @@ public class Menu {
             System.out.println(e.getMessage());
             start();
         }
+        if(!input.equals("q")) start();
     }
 
     private void handleSpecialInput(String input) {
@@ -138,6 +149,7 @@ public class Menu {
 
     private static void printExitMessage() {
         System.out.println(EXIT_MESSAGE);
+        System.exit(0);
     }
 
     private static void printInvalidInputMessage() {

@@ -15,11 +15,19 @@ import java.util.Objects;
 
 public class NewsApi {
     private static final String API_KEY = "aba5826bfd6a41ab980f009db6d19639";
+    //private static NewsApi instance = null;
 
     private static final OkHttpClient client = new OkHttpClient();
     private static final Gson gson = new Gson();
 
     private NewsApi() {}
+
+    /*public static NewsApi getInstance(){              //Würde man hier Singleton anwenden wenn nie eine Instance verwendet wird?
+        if(instance == null){
+            instance = new NewsApi();
+        }
+        return instance;
+    }*/
 
     public static NewsResponse request(String url) throws NewsApiException {
         Request request = new Request.Builder()
