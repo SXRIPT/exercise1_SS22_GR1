@@ -123,7 +123,7 @@ public class AppController {
 
         List<String> urls = new ArrayList<>();
 
-        articles.stream().map(Article::getURL).toList().forEach(downloader.saveUrl2File());
+        urls = articles.stream().map(Article::getURL).toList();
 
 
         // TODO extract urls from articles with java stream
