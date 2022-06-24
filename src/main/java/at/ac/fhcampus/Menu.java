@@ -2,6 +2,9 @@ package at.ac.fhcampus;
 
 import java.util.Scanner;
 import java.util.*;
+import at.ac.fhcampus.AppController;
+import at.ac.fhcampus.downloader.ParallelDownloader;
+import at.ac.fhcampus.downloader.SequentialDownloader;
 
 public class Menu {
     private final AppController controller = new AppController();
@@ -34,12 +37,13 @@ public class Menu {
             System.out.println(e.getMessage());
             start();
         }
+        if(!input.equals("q")) start();
     }
 
     private void handleSpecialInput(String input) {
         if(controller.getArticles() == null) {
             System.out.println("No articles found fetch articles before using!");
-            start();
+            input = "l";
         }
 
         switch (input) {
@@ -133,6 +137,21 @@ public class Menu {
 
         for (Article article : temp) {
             System.out.println(article);
+        }
+    }
+
+    private void downloadURLs(){
+        try {
+            int resultSequential = controller.downloadURLs(new SequentialDownloader());
+            // TODO print time in ms it took to download URLs sequentially
+
+            // TODO implement the process() function in ParallelDownloader class
+            int resultParallel = controller.downloadURLs(new ParallelDownloader());
+
+            // TODO print time in ms it took to download URLs parallel
+
+        } catch (NewsApiException e){
+            System.out.println(e.getMessage());
         }
     }
 
