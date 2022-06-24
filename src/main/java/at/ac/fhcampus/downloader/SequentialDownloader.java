@@ -10,6 +10,7 @@ public class SequentialDownloader extends Downloader {
     // returns number of downloaded article urls
     @Override
     public int process(List<String> urls) throws NewsApiException{
+        long currTime = System.currentTimeMillis();
         int count = 0;
         for (String url : urls) {
             try {
@@ -23,6 +24,8 @@ public class SequentialDownloader extends Downloader {
                 throw new NewsApiException("Different problem occurred in " + this.getClass().getName() + ". Message: " + e.getMessage());
             }
         }
+        long currTime2 = System.currentTimeMillis();
+        System.out.println("The runtime for the Sequential Download in milliseconds is: " + (currTime2-currTime));
         return count;
     }
 }
