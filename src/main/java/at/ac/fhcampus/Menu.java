@@ -154,14 +154,19 @@ public class Menu {
 
     private void downloadURLs(){
         try {
+            long currTime = System.currentTimeMillis();
             int resultSequential = controller.downloadURLs(new SequentialDownloader());
             // TODO print time in ms it took to download URLs sequentially
 
+            long currTime2 = System.currentTimeMillis();
+            System.out.println("The runtime for the Sequential Download in milliseconds is: " + (currTime2-currTime));
             // TODO implement the process() function in ParallelDownloader class
+            currTime = System.currentTimeMillis();
             int resultParallel = controller.downloadURLs(new ParallelDownloader());
 
             // TODO print time in ms it took to download URLs parallel
-
+            currTime2 = System.currentTimeMillis();
+            System.out.println("The runtime for the Parallel Download in milliseconds is: " + (currTime2-currTime));
         } catch (NewsApiException e){
             System.out.println(e.getMessage());
         }

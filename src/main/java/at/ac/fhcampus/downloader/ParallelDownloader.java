@@ -12,7 +12,6 @@ public class ParallelDownloader extends Downloader{
     public int process(List<String> urls) {
         // TODO implement download function using multiple threads
         // Hint: use ExecutorService with Callables
-        long currTime = System.currentTimeMillis();
 
         int numWorkers = Runtime.getRuntime().availableProcessors();
         ExecutorService pool = Executors.newFixedThreadPool(numWorkers);
@@ -36,8 +35,6 @@ public class ParallelDownloader extends Downloader{
             }
         }
 
-        long currTime2 = System.currentTimeMillis();
-        System.out.println("The runtime for the Parallel Download in milliseconds is: " + (currTime2-currTime));
         return 0;
     }
 }
