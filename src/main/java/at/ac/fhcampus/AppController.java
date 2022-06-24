@@ -7,7 +7,17 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AppController {
+    private static AppController instance = null;
     private List<Article> articles;
+
+    private AppController(){}
+
+    public static AppController getInstance(){
+        if(instance == null){
+            instance = new AppController();
+        }
+        return instance;
+    }
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
@@ -92,6 +102,7 @@ public class AppController {
     }
 
     public List<Article> getShortHeadline(){
+
         return articles
                 .stream()
                 .filter(article -> article.getTitle().length() < 15)
