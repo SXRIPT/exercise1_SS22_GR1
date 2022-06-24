@@ -3,6 +3,7 @@ package at.ac.fhcampus;
 import java.util.Scanner;
 import java.util.*;
 import at.ac.fhcampus.AppController;
+import at.ac.fhcampus.downloader.Downloader;
 import at.ac.fhcampus.downloader.ParallelDownloader;
 import at.ac.fhcampus.downloader.SequentialDownloader;
 
@@ -52,6 +53,7 @@ public class Menu {
             case "g" -> getNYTArticles(controller);
             case "h" -> getShortHeadline(controller);
             case "i" -> sortArticles(controller);
+            case "j" -> downloadURLs();
             default -> printInvalidInputMessage();
         }
 
@@ -143,6 +145,7 @@ public class Menu {
     private void downloadURLs(){
         try {
             int resultSequential = controller.downloadURLs(new SequentialDownloader());
+            System.out.println("ANY TIME");
             // TODO print time in ms it took to download URLs sequentially
 
             // TODO implement the process() function in ParallelDownloader class

@@ -108,9 +108,12 @@ public class AppController {
 
     public int downloadURLs(Downloader downloader) throws NewsApiException{
         if( articles == null)
-            throw new NewsApiException();
+            throw new NewsApiException("No Articles");
 
         List<String> urls = new ArrayList<>();
+
+        articles.stream().map(Article::getURL).toList().forEach(downloader.saveUrl2File());
+
 
         // TODO extract urls from articles with java stream
 

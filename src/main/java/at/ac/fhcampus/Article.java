@@ -41,6 +41,12 @@ public class Article {
     public String getAuthor(){
         return author;
     }
+    public String getURL(){
+        return url;
+    }
+    public String getUrlToImage(){
+        return urlToImage;
+    }
     public Source getSource(){
         return source;
     }
